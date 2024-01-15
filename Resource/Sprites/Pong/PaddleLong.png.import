@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfe2juslc1cey"
-path="res://.godot/imported/Minigame Cover.png-f04c6670d32406dc7638636326de7994.ctex"
+uid="uid://bty6dgbe5tc15"
+path="res://.godot/imported/PaddleLong.png-61a3e8c71da69d74bc01ac227f1e57e7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resource/Sprites/Minigame Cover.png"
-dest_files=["res://.godot/imported/Minigame Cover.png-f04c6670d32406dc7638636326de7994.ctex"]
+source_file="res://Resource/Sprites/Pong/PaddleLong.png"
+dest_files=["res://.godot/imported/PaddleLong.png-61a3e8c71da69d74bc01ac227f1e57e7.ctex"]
 
 [params]
 

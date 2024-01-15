@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgu60b81e4nhs"
-path="res://.godot/imported/Minigame SimonSays.png-9273082c123e6ad014fc8c9819c17f54.ctex"
+uid="uid://dp77wips4sf7a"
+path="res://.godot/imported/heart.png-b6e7b7d49d57bbafe0f2cf310734158c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resource/Sprites/Minigame SimonSays.png"
-dest_files=["res://.godot/imported/Minigame SimonSays.png-9273082c123e6ad014fc8c9819c17f54.ctex"]
+source_file="res://Resource/Sprites/Undertale/heart.png"
+dest_files=["res://.godot/imported/heart.png-b6e7b7d49d57bbafe0f2cf310734158c.ctex"]
 
 [params]
 

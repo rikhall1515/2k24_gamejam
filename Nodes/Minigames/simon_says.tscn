@@ -1,11 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://c0lv2d15krtlw"]
+[gd_scene load_steps=14 format=3 uid="uid://c0pof6ud7fgg"]
 
 [ext_resource type="Texture2D" uid="uid://cef8o21udfh0s" path="res://Resource/Sprites/Minigame border.png" id="1_1ko8e"]
 [ext_resource type="Script" path="res://Nodes/Minigames/BaseNode.gd" id="1_u0gq8"]
 [ext_resource type="Script" path="res://Nodes/Minigames/simon_says.gd" id="1_ysp3q"]
-[ext_resource type="Texture2D" uid="uid://cgu60b81e4nhs" path="res://Resource/Sprites/Minigame SimonSays.png" id="2_hmqvv"]
-[ext_resource type="Texture2D" uid="uid://cvni81wuh3q10" path="res://Resource/Sprites/Minigame SimonSaysTriangle.png" id="4_lh3wg"]
-[ext_resource type="Texture2D" uid="uid://bfe2juslc1cey" path="res://Resource/Sprites/Minigame Cover.png" id="6_xikdu"]
+[ext_resource type="Texture2D" uid="uid://cgu60b81e4nhs" path="res://Resource/Sprites/SimonSays/Minigame SimonSays.png" id="4_pp3f2"]
+[ext_resource type="Texture2D" uid="uid://cvni81wuh3q10" path="res://Resource/Sprites/SimonSays/Minigame SimonSaysTriangle.png" id="5_uai1c"]
+[ext_resource type="Texture2D" uid="uid://bfe2juslc1cey" path="res://Resource/Sprites/SimonSays/Minigame Cover.png" id="6_ehdxx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_au75f"]
 size = Vector2(256, 256)
@@ -92,7 +92,6 @@ _data = {
 script = ExtResource("1_u0gq8")
 
 [node name="Border" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 0, 1)
 texture = ExtResource("1_1ko8e")
 
 [node name="Area2D" type="Area2D" parent="Border"]
@@ -131,11 +130,11 @@ rotation = 1.5708
 polygon = PackedVector2Array(118, -116, 2, -1, 2, 1, 118, 116)
 
 [node name="SimonSays" type="Sprite2D" parent="SimonSays"]
-texture = ExtResource("2_hmqvv")
+texture = ExtResource("4_pp3f2")
 
 [node name="UpLight" type="PointLight2D" parent="SimonSays"]
 energy = 0.0
-texture = ExtResource("4_lh3wg")
+texture = ExtResource("5_uai1c")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SimonSays/UpLight"]
 libraries = {
@@ -145,7 +144,7 @@ libraries = {
 [node name="RightLight" type="PointLight2D" parent="SimonSays"]
 rotation = 1.5708
 energy = 0.0
-texture = ExtResource("4_lh3wg")
+texture = ExtResource("5_uai1c")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SimonSays/RightLight"]
 libraries = {
@@ -155,7 +154,7 @@ libraries = {
 [node name="DownLight" type="PointLight2D" parent="SimonSays"]
 rotation = 3.14159
 energy = 0.0
-texture = ExtResource("4_lh3wg")
+texture = ExtResource("5_uai1c")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SimonSays/DownLight"]
 libraries = {
@@ -165,7 +164,7 @@ libraries = {
 [node name="LeftLight" type="PointLight2D" parent="SimonSays"]
 rotation = -1.5708
 energy = 0.0
-texture = ExtResource("4_lh3wg")
+texture = ExtResource("5_uai1c")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SimonSays/LeftLight"]
 libraries = {
@@ -192,7 +191,7 @@ wait_time = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0)
-texture = ExtResource("6_xikdu")
+texture = ExtResource("6_ehdxx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
 libraries = {

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvni81wuh3q10"
-path="res://.godot/imported/Minigame SimonSaysTriangle.png-85e737c7aac07f9e1dffb96b07687ed2.ctex"
+uid="uid://cl1puwkw7mh43"
+path="res://.godot/imported/Background.png-e0ce4192038fff8fae5bf3b555965912.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resource/Sprites/Minigame SimonSaysTriangle.png"
-dest_files=["res://.godot/imported/Minigame SimonSaysTriangle.png-85e737c7aac07f9e1dffb96b07687ed2.ctex"]
+source_file="res://Resource/Sprites/Undertale/Background.png"
+dest_files=["res://.godot/imported/Background.png-e0ce4192038fff8fae5bf3b555965912.ctex"]
 
 [params]
 

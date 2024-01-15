@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://co4x4rji60fws"]
 
-[ext_resource type="PackedScene" uid="uid://c0lv2d15krtlw" path="res://Nodes/Minigames/simon_says.tscn" id="1_33hox"]
+[ext_resource type="PackedScene" path="res://Nodes/Minigames/simon_says.tscn" id="1_33hox"]
 [ext_resource type="Script" path="res://Nodes/Levels/game_engine.gd" id="1_hdmhl"]
 [ext_resource type="Script" path="res://Nodes/Levels/UIRoot.gd" id="3_vj5eu"]
 [ext_resource type="PackedScene" uid="uid://qnpig6a6y8bq" path="res://Nodes/Minigames/rails.tscn" id="4_kp2tl"]
