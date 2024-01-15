@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://qnpig6a6y8bq"]
+
+[ext_resource type="PackedScene" uid="uid://bwhr7r1m5b7cq" path="res://Nodes/Minigames/base_node.tscn" id="1_18hxd"]
+[ext_resource type="Texture2D" uid="uid://bun5snf2mps1t" path="res://Resource/Sprites/Trains/Rails2.png" id="2_1rqku"]
+[ext_resource type="Texture2D" uid="uid://mu4fh3mnfd62" path="res://Resource/Sprites/Trains/PlayerRail.png" id="4_tcww1"]
+
+[node name="Rails" instance=ExtResource("1_18hxd")]
+
+[node name="Background" type="Sprite2D" parent="." index="2"]
+texture = ExtResource("2_1rqku")
+
+[node name="Sprite2D" parent="." index="3"]
+position = Vector2(-95, -96)
+
+[node name="Sprite2D2" type="Sprite2D" parent="." index="4"]
+texture = ExtResource("4_tcww1")

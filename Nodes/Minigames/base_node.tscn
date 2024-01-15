@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://bwhr7r1m5b7cq"]
+
+[ext_resource type="Script" path="res://Nodes/Minigames/BaseNode.gd" id="1_wddpq"]
+[ext_resource type="Texture2D" uid="uid://cef8o21udfh0s" path="res://Resource/Sprites/Minigame border.png" id="2_1tlg7"]
+[ext_resource type="Texture2D" uid="uid://bfe2juslc1cey" path="res://Resource/Sprites/Minigame Cover.png" id="3_fue46"]
+[ext_resource type="Texture2D" uid="uid://d3qkatf38sc4c" path="res://Resource/Sprites/Trains/Trains.png" id="4_2hkfh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mne86"]
+size = Vector2(256, 256)
+
+[sub_resource type="Animation" id="Animation_2knar"]
+resource_name = "Hide"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1.5, 0.75),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.941176)]
+}
+
+[sub_resource type="Animation" id="Animation_objpo"]
+resource_name = "Reveal"
+length = 1.10001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1.5, 0.75),
+"update": 0,
+"values": [Color(0, 0, 0, 0.941176), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_26043"]
+_data = {
+"Hide": SubResource("Animation_2knar"),
+"Reveal": SubResource("Animation_objpo")
+}
+
+[node name="BaseNode" type="Node2D"]
+script = ExtResource("1_wddpq")
+
+[node name="Border" type="Sprite2D" parent="."]
+texture = ExtResource("2_1tlg7")
+
+[node name="Area2D" type="Area2D" parent="Border"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/Area2D"]
+shape = SubResource("RectangleShape2D_mne86")
+
+[node name="Cover" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0)
+texture = ExtResource("3_fue46")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cover"]
+libraries = {
+"": SubResource("AnimationLibrary_26043")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("4_2hkfh")
+
+[connection signal="mouse_entered" from="Border/Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Border/Area2D" to="." method="_on_area_2d_mouse_exited"]

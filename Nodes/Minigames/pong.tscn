@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://0dy000pekki6"]
+
+[ext_resource type="PackedScene" uid="uid://bwhr7r1m5b7cq" path="res://Nodes/Minigames/base_node.tscn" id="1_qe5xa"]
+
+[node name="Pong" instance=ExtResource("1_qe5xa")]

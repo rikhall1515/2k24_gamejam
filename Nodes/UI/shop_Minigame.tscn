@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdorfrjqeg85i"]
+
+[ext_resource type="Texture2D" uid="uid://cef8o21udfh0s" path="res://Resource/Sprites/Minigame border.png" id="1_kbx08"]
+
+[node name="ShopMinigame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = -128.0
+offset_top = -309.0
+offset_right = 135.0
+offset_bottom = -267.0
+text = "Item Name Here"
+
+[node name="Information" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = -129.0
+offset_top = -258.0
+offset_right = 132.0
+offset_bottom = -137.0
+text = "Item details here, a small explenation of what the minigame does."
+
+[node name="ControlScheme" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = -127.0
+offset_top = 143.0
+offset_right = 126.0
+offset_bottom = 203.0
+text = "Controls: Mouse"
+
+[node name="Stats" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = -128.0
+offset_top = 205.0
+offset_right = 128.0
+offset_bottom = 322.0
+text = "Active Time: 								30
+Inactive Time:							30
+Memory Length: 						3
+Unaffected by Speed"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_kbx08")

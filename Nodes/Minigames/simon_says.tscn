@@ -1,0 +1,214 @@
+[gd_scene load_steps=14 format=3 uid="uid://c0lv2d15krtlw"]
+
+[ext_resource type="Texture2D" uid="uid://cef8o21udfh0s" path="res://Resource/Sprites/Minigame border.png" id="1_1ko8e"]
+[ext_resource type="Script" path="res://Nodes/Minigames/BaseNode.gd" id="1_u0gq8"]
+[ext_resource type="Script" path="res://Nodes/Minigames/simon_says.gd" id="1_ysp3q"]
+[ext_resource type="Texture2D" uid="uid://cgu60b81e4nhs" path="res://Resource/Sprites/Minigame SimonSays.png" id="2_hmqvv"]
+[ext_resource type="Texture2D" uid="uid://cvni81wuh3q10" path="res://Resource/Sprites/Minigame SimonSaysTriangle.png" id="4_lh3wg"]
+[ext_resource type="Texture2D" uid="uid://bfe2juslc1cey" path="res://Resource/Sprites/Minigame Cover.png" id="6_xikdu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_au75f"]
+size = Vector2(256, 256)
+
+[sub_resource type="Animation" id="Animation_dspsj"]
+resource_name = "Blink"
+length = 0.683335
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.283333, 0.383333, 0.666667),
+"transitions": PackedFloat32Array(1.5, 1, 2, 0.75),
+"update": 0,
+"values": [0.0, 1.5, 1.5, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_x6e3j"]
+resource_name = "BlinkPressed"
+length = 0.166668
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.116667, 0.166667),
+"transitions": PackedFloat32Array(3, 1, 1, 0.333),
+"update": 0,
+"values": [0.0, 0.3, 0.3, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qe65t"]
+_data = {
+"BlinkIdle": SubResource("Animation_dspsj"),
+"BlinkPressed": SubResource("Animation_x6e3j")
+}
+
+[sub_resource type="Animation" id="Animation_2knar"]
+resource_name = "Hide"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1.5, 0.75),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.941176)]
+}
+
+[sub_resource type="Animation" id="Animation_objpo"]
+resource_name = "Reveal"
+length = 1.10001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1.5, 0.75),
+"update": 0,
+"values": [Color(0, 0, 0, 0.941176), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_26043"]
+_data = {
+"Hide": SubResource("Animation_2knar"),
+"Reveal": SubResource("Animation_objpo")
+}
+
+[node name="SimonSays" type="Node2D"]
+script = ExtResource("1_u0gq8")
+
+[node name="Border" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 0, 1)
+texture = ExtResource("1_1ko8e")
+
+[node name="Area2D" type="Area2D" parent="Border"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/Area2D"]
+shape = SubResource("RectangleShape2D_au75f")
+
+[node name="SimonSays" type="Node2D" parent="."]
+script = ExtResource("1_ysp3q")
+BaseCooldown = 5.0
+AdditionalCooldown = 25.0
+BaseTimer = 5.0
+AdditionalTimer = 25.0
+
+[node name="Right" type="Area2D" parent="SimonSays"]
+
+[node name="Red" type="CollisionPolygon2D" parent="SimonSays/Right"]
+polygon = PackedVector2Array(118, -116, 2, -1, 2, 1, 118, 116)
+
+[node name="Left" type="Area2D" parent="SimonSays"]
+
+[node name="Green" type="CollisionPolygon2D" parent="SimonSays/Left"]
+rotation = -3.14159
+polygon = PackedVector2Array(118, -116, 2, -1, 2, 1, 118, 116)
+
+[node name="Up" type="Area2D" parent="SimonSays"]
+
+[node name="Blue" type="CollisionPolygon2D" parent="SimonSays/Up"]
+rotation = -1.5708
+polygon = PackedVector2Array(118, -116, 2, -1, 2, 1, 118, 116)
+
+[node name="Down" type="Area2D" parent="SimonSays"]
+
+[node name="Yellow" type="CollisionPolygon2D" parent="SimonSays/Down"]
+rotation = 1.5708
+polygon = PackedVector2Array(118, -116, 2, -1, 2, 1, 118, 116)
+
+[node name="SimonSays" type="Sprite2D" parent="SimonSays"]
+texture = ExtResource("2_hmqvv")
+
+[node name="UpLight" type="PointLight2D" parent="SimonSays"]
+energy = 0.0
+texture = ExtResource("4_lh3wg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SimonSays/UpLight"]
+libraries = {
+"": SubResource("AnimationLibrary_qe65t")
+}
+
+[node name="RightLight" type="PointLight2D" parent="SimonSays"]
+rotation = 1.5708
+energy = 0.0
+texture = ExtResource("4_lh3wg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SimonSays/RightLight"]
+libraries = {
+"": SubResource("AnimationLibrary_qe65t")
+}
+
+[node name="DownLight" type="PointLight2D" parent="SimonSays"]
+rotation = 3.14159
+energy = 0.0
+texture = ExtResource("4_lh3wg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SimonSays/DownLight"]
+libraries = {
+"": SubResource("AnimationLibrary_qe65t")
+}
+
+[node name="LeftLight" type="PointLight2D" parent="SimonSays"]
+rotation = -1.5708
+energy = 0.0
+texture = ExtResource("4_lh3wg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SimonSays/LeftLight"]
+libraries = {
+"": SubResource("AnimationLibrary_qe65t")
+}
+
+[node name="Timout" type="Timer" parent="SimonSays"]
+wait_time = 30.0
+one_shot = true
+
+[node name="IdleBlinkTimer" type="Timer" parent="SimonSays"]
+one_shot = true
+
+[node name="ReplayIdleBlinkTimer" type="Timer" parent="SimonSays"]
+wait_time = 5.0
+one_shot = true
+
+[node name="Cooldown" type="Timer" parent="SimonSays"]
+wait_time = 5.0
+one_shot = true
+
+[node name="HideRevealTimer" type="Timer" parent="SimonSays"]
+wait_time = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0)
+texture = ExtResource("6_xikdu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_26043")
+}
+
+[connection signal="changedValues" from="." to="SimonSays" method="_on_simon_says_changed_values"]
+[connection signal="mouse_entered" from="Border/Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Border/Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="gameFail" from="SimonSays" to="." method="_on_game_fail"]
+[connection signal="input_event" from="SimonSays/Right" to="SimonSays" method="_on_right_input_event"]
+[connection signal="input_event" from="SimonSays/Left" to="SimonSays" method="_on_left_input_event"]
+[connection signal="input_event" from="SimonSays/Up" to="SimonSays" method="_on_up_input_event"]
+[connection signal="input_event" from="SimonSays/Down" to="SimonSays" method="_on_down_input_event"]
+[connection signal="timeout" from="SimonSays/Timout" to="SimonSays" method="_on_timout_timeout"]
+[connection signal="timeout" from="SimonSays/IdleBlinkTimer" to="SimonSays" method="_on_idle_blink_timer_timeout"]
+[connection signal="timeout" from="SimonSays/ReplayIdleBlinkTimer" to="SimonSays" method="_on_replay_idle_blink_timer_timeout"]
+[connection signal="timeout" from="SimonSays/Cooldown" to="SimonSays" method="_on_cooldown_timeout"]
+[connection signal="timeout" from="SimonSays/HideRevealTimer" to="SimonSays" method="_on_hide_reveal_timer_timeout"]

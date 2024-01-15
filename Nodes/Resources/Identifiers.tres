@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Identifiers" load_steps=2 format=3 uid="uid://km7mcu0ue82p"]
+
+[ext_resource type="Script" path="res://Nodes/Resources/Identifiers.gd" id="1_120wk"]
+
+[resource]
+script = ExtResource("1_120wk")
+enebletimer = true
+timerlength = 30.0
+cooldowntime = 30.0
+speed = 1.0

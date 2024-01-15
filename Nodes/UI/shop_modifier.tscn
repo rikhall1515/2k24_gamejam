@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt6gbggdv3ugk"]
+
+[ext_resource type="Texture2D" uid="uid://cef8o21udfh0s" path="res://Resource/Sprites/Minigame border.png" id="1_uvpyl"]
+
+[node name="ShopModifier" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = -130.0
+offset_top = -332.0
+offset_right = 133.0
+offset_bottom = -290.0
+text = "Modifier name here"
+
+[node name="Information" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = -130.0
+offset_top = -202.0
+offset_right = 131.0
+offset_bottom = -132.0
+text = "Modifier details here, a small explenation of what the modifier does."
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_uvpyl")

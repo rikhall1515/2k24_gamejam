@@ -1,0 +1,177 @@
+[gd_scene load_steps=12 format=3 uid="uid://co4x4rji60fws"]
+
+[ext_resource type="PackedScene" uid="uid://c0lv2d15krtlw" path="res://Nodes/Minigames/simon_says.tscn" id="1_33hox"]
+[ext_resource type="Script" path="res://Nodes/Levels/game_engine.gd" id="1_hdmhl"]
+[ext_resource type="Script" path="res://Nodes/Levels/UIRoot.gd" id="3_vj5eu"]
+[ext_resource type="PackedScene" uid="uid://qnpig6a6y8bq" path="res://Nodes/Minigames/rails.tscn" id="4_kp2tl"]
+[ext_resource type="Texture2D" uid="uid://cef8o21udfh0s" path="res://Resource/Sprites/Minigame border.png" id="5_g8pfn"]
+
+[sub_resource type="Animation" id="Animation_wk5dr"]
+resource_name = "GameToMenu"
+length = 1.01667
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0166667, 0.5, 1),
+"transitions": PackedFloat32Array(2, 0.3, 1),
+"update": 0,
+"values": [Vector2(-128, -128), Vector2(-1128, -128), Vector2(-2128, -128)]
+}
+
+[sub_resource type="Animation" id="Animation_d4n70"]
+resource_name = "CameraToShop"
+length = 1.01667
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(2, 0.3, 1),
+"update": 0,
+"values": [Vector2(-128, -128), Vector2(654, -128), Vector2(1400, -128)]
+}
+
+[sub_resource type="Animation" id="Animation_warta"]
+resource_name = "MenuToGame"
+length = 1.01667
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.0001),
+"transitions": PackedFloat32Array(2, 0.3, 1, 1),
+"update": 0,
+"values": [Vector2(-2128, -128), Vector2(-1128, -128), Vector2(-128, -128), Vector2(-128, -128)]
+}
+
+[sub_resource type="Animation" id="Animation_f8j2i"]
+resource_name = "CamereToGame"
+length = 1.01667
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(2, 0.3, 1),
+"update": 0,
+"values": [Vector2(1400, -128), Vector2(654, -128), Vector2(-128, -128)]
+}
+
+[sub_resource type="Animation" id="Animation_klcb3"]
+resource_name = "ShopToMenu"
+length = 1.01667
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(2, 0.3, 1),
+"update": 0,
+"values": [Vector2(1400, -128), Vector2(-128, -128), Vector2(-2128, -128)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xqv5g"]
+_data = {
+"GameToMenu": SubResource("Animation_wk5dr"),
+"GameToShop": SubResource("Animation_d4n70"),
+"MenuToGame": SubResource("Animation_warta"),
+"ShopToGame": SubResource("Animation_f8j2i"),
+"ShopToMenu": SubResource("Animation_klcb3")
+}
+
+[node name="GameEngine" type="Node2D"]
+script = ExtResource("1_hdmhl")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-2128, -128)
+offset = Vector2(-128, -128)
+anchor_mode = 0
+position_smoothing_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D"]
+libraries = {
+"": SubResource("AnimationLibrary_xqv5g")
+}
+
+[node name="SimonSays" parent="." instance=ExtResource("1_33hox")]
+
+[node name="UIRoot" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_vj5eu")
+
+[node name="StartGameButton" type="Button" parent="UIRoot"]
+layout_mode = 0
+offset_left = -1565.0
+offset_top = -73.0
+offset_right = -1469.0
+offset_bottom = -35.0
+text = "Start Game"
+
+[node name="OptionsButton" type="Button" parent="UIRoot"]
+layout_mode = 0
+offset_left = -1563.0
+offset_top = -12.0
+offset_right = -1466.0
+offset_bottom = 24.0
+text = "Options"
+
+[node name="Button" type="Button" parent="UIRoot"]
+layout_mode = 0
+offset_left = -1565.0
+offset_top = 40.0
+offset_right = -1463.0
+offset_bottom = 71.0
+text = "Quit"
+
+[node name="TimeSurvived" type="RichTextLabel" parent="UIRoot"]
+layout_mode = 0
+offset_left = 1356.0
+offset_top = -157.0
+offset_right = 1557.0
+offset_bottom = -97.0
+text = "Time Survived: 0"
+
+[node name="Countdown" type="RichTextLabel" parent="UIRoot"]
+layout_mode = 0
+offset_left = 348.0
+offset_top = 159.0
+offset_right = 549.0
+offset_bottom = 335.0
+text = "3"
+
+[node name="Rails" parent="." instance=ExtResource("4_kp2tl")]
+position = Vector2(265, 0)
+
+[node name="MinigameBorder" type="Sprite2D" parent="."]
+position = Vector2(586, 9)
+texture = ExtResource("5_g8pfn")
+
+[node name="MinigameBorder2" type="Sprite2D" parent="."]
+position = Vector2(886, 14)
+texture = ExtResource("5_g8pfn")
+
+[connection signal="pressed" from="UIRoot/StartGameButton" to="." method="_on_start_game_button_pressed"]
