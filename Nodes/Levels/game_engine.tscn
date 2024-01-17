@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://co4x4rji60fws"]
+[gd_scene load_steps=13 format=3 uid="uid://co4x4rji60fws"]
 
-[ext_resource type="PackedScene" path="res://Nodes/Minigames/simon_says.tscn" id="1_33hox"]
+[ext_resource type="PackedScene" uid="uid://c0pof6ud7fgg" path="res://Nodes/Minigames/simon_says.tscn" id="1_33hox"]
 [ext_resource type="Script" path="res://Nodes/Levels/game_engine.gd" id="1_hdmhl"]
 [ext_resource type="Script" path="res://Nodes/Levels/UIRoot.gd" id="3_vj5eu"]
 [ext_resource type="PackedScene" uid="uid://qnpig6a6y8bq" path="res://Nodes/Minigames/rails.tscn" id="4_kp2tl"]
 [ext_resource type="Texture2D" uid="uid://cef8o21udfh0s" path="res://Resource/Sprites/Minigame border.png" id="5_g8pfn"]
+[ext_resource type="PackedScene" uid="uid://0dy000pekki6" path="res://Nodes/Minigames/pong.tscn" id="6_1udyh"]
 
 [sub_resource type="Animation" id="Animation_wk5dr"]
 resource_name = "GameToMenu"
@@ -104,7 +105,7 @@ _data = {
 script = ExtResource("1_hdmhl")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-2128, -128)
+position = Vector2(-128, -128)
 offset = Vector2(-128, -128)
 anchor_mode = 0
 position_smoothing_enabled = true
@@ -166,12 +167,11 @@ text = "3"
 [node name="Rails" parent="." instance=ExtResource("4_kp2tl")]
 position = Vector2(265, 0)
 
-[node name="MinigameBorder" type="Sprite2D" parent="."]
-position = Vector2(586, 9)
-texture = ExtResource("5_g8pfn")
-
 [node name="MinigameBorder2" type="Sprite2D" parent="."]
 position = Vector2(886, 14)
 texture = ExtResource("5_g8pfn")
+
+[node name="Pong" parent="." instance=ExtResource("6_1udyh")]
+position = Vector2(530, 0)
 
 [connection signal="pressed" from="UIRoot/StartGameButton" to="." method="_on_start_game_button_pressed"]

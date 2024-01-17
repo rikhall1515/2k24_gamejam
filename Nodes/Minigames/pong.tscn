@@ -1,5 +1,75 @@
-[gd_scene load_steps=2 format=3 uid="uid://0dy000pekki6"]
+[gd_scene load_steps=11 format=3 uid="uid://0dy000pekki6"]
 
 [ext_resource type="PackedScene" uid="uid://bwhr7r1m5b7cq" path="res://Nodes/Minigames/base_node.tscn" id="1_qe5xa"]
+[ext_resource type="Texture2D" uid="uid://ooat7kwywlur" path="res://Resource/Sprites/Pong/Background.png" id="2_sbeyg"]
+[ext_resource type="Script" path="res://Nodes/Minigames/Padddles.gd" id="3_0syq8"]
+[ext_resource type="Texture2D" uid="uid://bty6dgbe5tc15" path="res://Resource/Sprites/Pong/PaddleLong.png" id="4_qjl2s"]
+[ext_resource type="Texture2D" uid="uid://bobbe0yv7dsgy" path="res://Resource/Sprites/Pong/Ball.png" id="5_2atst"]
+[ext_resource type="Script" path="res://Nodes/Minigames/Ball.gd" id="5_g2in4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1v06c"]
+size = Vector2(8, 112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ac0b"]
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8f16j"]
+size = Vector2(256, 7.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qkgto"]
+size = Vector2(4, 256)
 
 [node name="Pong" instance=ExtResource("1_qe5xa")]
+
+[node name="Pong" type="Node2D" parent="." index="0"]
+
+[node name="Background" type="Sprite2D" parent="Pong" index="0"]
+texture = ExtResource("2_sbeyg")
+
+[node name="Padddles" type="CharacterBody2D" parent="Pong" index="1"]
+script = ExtResource("3_0syq8")
+
+[node name="Left" type="CollisionShape2D" parent="Pong/Padddles" index="0"]
+position = Vector2(-112, 0)
+shape = SubResource("RectangleShape2D_1v06c")
+
+[node name="PaddleSprite" type="Sprite2D" parent="Pong/Padddles/Left" index="0"]
+texture = ExtResource("4_qjl2s")
+
+[node name="Right" type="CollisionShape2D" parent="Pong/Padddles" index="1"]
+position = Vector2(112, 0)
+shape = SubResource("RectangleShape2D_1v06c")
+
+[node name="PaddleSprite" type="Sprite2D" parent="Pong/Padddles/Right" index="0"]
+texture = ExtResource("4_qjl2s")
+
+[node name="Ball" type="CharacterBody2D" parent="Pong" index="2"]
+script = ExtResource("5_g2in4")
+
+[node name="BallSprite" type="Sprite2D" parent="Pong/Ball" index="0"]
+texture = ExtResource("5_2atst")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pong/Ball" index="1"]
+shape = SubResource("RectangleShape2D_7ac0b")
+
+[node name="Borders" type="StaticBody2D" parent="Pong" index="3"]
+
+[node name="Top" type="CollisionShape2D" parent="Pong/Borders" index="0"]
+position = Vector2(0, -124.25)
+shape = SubResource("RectangleShape2D_8f16j")
+
+[node name="Bottom" type="CollisionShape2D" parent="Pong/Borders" index="1"]
+position = Vector2(0, 124.25)
+shape = SubResource("RectangleShape2D_8f16j")
+
+[node name="DeathBorder" type="Area2D" parent="Pong" index="4"]
+
+[node name="Left" type="CollisionShape2D" parent="Pong/DeathBorder" index="0"]
+position = Vector2(-130, 0)
+shape = SubResource("RectangleShape2D_qkgto")
+
+[node name="Right" type="CollisionShape2D" parent="Pong/DeathBorder" index="1"]
+position = Vector2(130, 0)
+shape = SubResource("RectangleShape2D_qkgto")
+
+[connection signal="body_entered" from="Pong/DeathBorder" to="Pong/Ball" method="_on_death_border_body_entered"]
