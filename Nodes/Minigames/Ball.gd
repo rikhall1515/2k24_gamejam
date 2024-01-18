@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
-
+@export var cooldownTime = 30
 @export var Basespeed = Vector2(100.0, 10.0)
 @export var speedMultiplier = 1
 @export var Difficulty = 1
-@export var cooldownTime = 30
+var maxDifficulty = 4
 
-var speed 
+var speed
 
 func _ready():
 	velocity = Vector2(1, 1)
@@ -23,7 +23,8 @@ func _physics_process(delta):
 
 
 func randomizeY():
-	return Basespeed * speedMultiplier * Vector2(1, randf_range(3, 6) * (randi_range(0, 1) * 2 - 1)) 
+	var randomY = Vector2(1, randf_range(3, 6) * (randi_range(0, 1) * 2 - 1)) 
+	return Basespeed * speedMultiplier * randomY
 	
 
 
