@@ -45,12 +45,16 @@ func displayNextSimon():
 	match sequence[currentDisplay]:
 		Dir.UP:
 			$UpLight/AnimationPlayer.play("BlinkIdle")
+			$UpLight/Tone1.play()
 		Dir.LEFT:
 			$LeftLight/AnimationPlayer.play("BlinkIdle")
+			$RightLight/Tone2.play()
 		Dir.DOWN:
 			$DownLight/AnimationPlayer.play("BlinkIdle")
+			$DownLight/Tone3.play()
 		Dir.RIGHT:
 			$RightLight/AnimationPlayer.play("BlinkIdle")
+			$LeftLight/Tone4.play()
 		_:
 			print("ERROR, Invalid Simon Button")
 	currentDisplay += 1
@@ -63,12 +67,16 @@ func simonInput(location, event):
 			match location:
 				Dir.UP:
 					$UpLight/AnimationPlayer.play("BlinkPressed")
+					$UpLight/Tone1.play()
 				Dir.LEFT:
 					$LeftLight/AnimationPlayer.play("BlinkPressed")
+					$RightLight/Tone2.play()
 				Dir.DOWN:
 					$DownLight/AnimationPlayer.play("BlinkPressed")
+					$DownLight/Tone3.play()
 				Dir.RIGHT:
 					$RightLight/AnimationPlayer.play("BlinkPressed")
+					$LeftLight/Tone4.play()
 				_:
 					print("ERROR, Invalid Simon Button")
 			if location == sequence[currentGuess]:

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b7p8y11p15ktu"
+path="res://.godot/imported/HeavyHit.wav-5a233853aeabce4817df5ae8437fb224.sample"
+
+[deps]
+
+source_file="res://Resource/Audio/Sound Effects/Pong/HeavyHit.wav"
+dest_files=["res://.godot/imported/HeavyHit.wav-5a233853aeabce4817df5ae8437fb224.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

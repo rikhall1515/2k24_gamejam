@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://smcandet0hlb"
+path="res://.godot/imported/LightHit.wav-08ca023a0f679d0dbfc930ae9983b43f.sample"
+
+[deps]
+
+source_file="res://Resource/Audio/Sound Effects/Pong/LightHit.wav"
+dest_files=["res://.godot/imported/LightHit.wav-08ca023a0f679d0dbfc930ae9983b43f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

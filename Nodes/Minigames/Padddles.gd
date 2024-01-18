@@ -1,15 +1,32 @@
 extends CharacterBody2D
 
+@export var difficulty = 1
+var maxDifficulty = 4
+var paused: bool = false
 
-const SPEED = 300.0
+const SPEED = 10000.0
 
 func _physics_process(delta):
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+	if (paused):
+		return
+	
 	var direction = Input.get_axis("Up", "Down")
 	if direction:
-		velocity.y = direction * SPEED
+		velocity.y = direction * SPEED * delta
 	else:
-		velocity.y = move_toward(velocity.y, 0, SPEED)
+		velocity.y = 0
 
 	move_and_slide()
+
+
+func _on_pong_changed_values(_speedChange, difficultyChange, _timerLength, _cooldownLength):
+	difficulty = difficultyChange
+
+
+
+func _on_ball_pause_game():
+	paused = true
+
+
+func _on_ball_resume_game():
+	paused = false
