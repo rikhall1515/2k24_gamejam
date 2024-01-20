@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b3yfdimygtski"
+path="res://.godot/imported/tone1.wav-a4f014e6b8e10590321f6c83cf093174.sample"
+
+[deps]
+
+source_file="res://Resource/Audio/Sound Effects/SimonSays/tone1.wav"
+dest_files=["res://.godot/imported/tone1.wav-a4f014e6b8e10590321f6c83cf093174.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

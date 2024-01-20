@@ -1,11 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://c0pof6ud7fgg"]
+[gd_scene load_steps=18 format=3 uid="uid://c0pof6ud7fgg"]
 
 [ext_resource type="Texture2D" uid="uid://cef8o21udfh0s" path="res://Resource/Sprites/Minigame border.png" id="1_1ko8e"]
 [ext_resource type="Script" path="res://Nodes/Minigames/BaseNode.gd" id="1_u0gq8"]
 [ext_resource type="Script" path="res://Nodes/Minigames/simon_says.gd" id="1_ysp3q"]
 [ext_resource type="Texture2D" uid="uid://cgu60b81e4nhs" path="res://Resource/Sprites/SimonSays/Minigame SimonSays.png" id="4_pp3f2"]
 [ext_resource type="Texture2D" uid="uid://cvni81wuh3q10" path="res://Resource/Sprites/SimonSays/Minigame SimonSaysTriangle.png" id="5_uai1c"]
+[ext_resource type="AudioStream" uid="uid://b3yfdimygtski" path="res://Resource/Audio/Sound Effects/SimonSays/tone1.wav" id="6_cqnuj"]
 [ext_resource type="Texture2D" uid="uid://bfe2juslc1cey" path="res://Resource/Sprites/SimonSays/Minigame Cover.png" id="6_ehdxx"]
+[ext_resource type="AudioStream" uid="uid://co2oipb1raad6" path="res://Resource/Audio/Sound Effects/SimonSays/tone2.wav" id="7_lp3rr"]
+[ext_resource type="AudioStream" uid="uid://x1vpiwibpi5d" path="res://Resource/Audio/Sound Effects/SimonSays/tone3.wav" id="8_1lcdw"]
+[ext_resource type="AudioStream" uid="uid://xq2bmebta6vj" path="res://Resource/Audio/Sound Effects/SimonSays/tone4.wav" id="9_jwjs4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_au75f"]
 size = Vector2(256, 256)
@@ -141,6 +145,9 @@ libraries = {
 "": SubResource("AnimationLibrary_qe65t")
 }
 
+[node name="Tone1" type="AudioStreamPlayer2D" parent="SimonSays/UpLight"]
+stream = ExtResource("6_cqnuj")
+
 [node name="RightLight" type="PointLight2D" parent="SimonSays"]
 rotation = 1.5708
 energy = 0.0
@@ -150,6 +157,9 @@ texture = ExtResource("5_uai1c")
 libraries = {
 "": SubResource("AnimationLibrary_qe65t")
 }
+
+[node name="Tone2" type="AudioStreamPlayer2D" parent="SimonSays/RightLight"]
+stream = ExtResource("7_lp3rr")
 
 [node name="DownLight" type="PointLight2D" parent="SimonSays"]
 rotation = 3.14159
@@ -161,6 +171,9 @@ libraries = {
 "": SubResource("AnimationLibrary_qe65t")
 }
 
+[node name="Tone3" type="AudioStreamPlayer2D" parent="SimonSays/DownLight"]
+stream = ExtResource("8_1lcdw")
+
 [node name="LeftLight" type="PointLight2D" parent="SimonSays"]
 rotation = -1.5708
 energy = 0.0
@@ -170,6 +183,9 @@ texture = ExtResource("5_uai1c")
 libraries = {
 "": SubResource("AnimationLibrary_qe65t")
 }
+
+[node name="Tone4" type="AudioStreamPlayer2D" parent="SimonSays/LeftLight"]
+stream = ExtResource("9_jwjs4")
 
 [node name="Timout" type="Timer" parent="SimonSays"]
 wait_time = 30.0
