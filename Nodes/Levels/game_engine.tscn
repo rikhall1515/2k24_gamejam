@@ -1,11 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://co4x4rji60fws"]
+[gd_scene load_steps=9 format=3 uid="uid://co4x4rji60fws"]
 
-[ext_resource type="PackedScene" uid="uid://c0pof6ud7fgg" path="res://Nodes/Minigames/simon_says.tscn" id="1_33hox"]
 [ext_resource type="Script" path="res://Nodes/Levels/game_engine.gd" id="1_hdmhl"]
 [ext_resource type="Script" path="res://Nodes/Levels/UIRoot.gd" id="3_vj5eu"]
-[ext_resource type="PackedScene" uid="uid://qnpig6a6y8bq" path="res://Nodes/Minigames/rails.tscn" id="4_kp2tl"]
-[ext_resource type="Texture2D" uid="uid://cef8o21udfh0s" path="res://Resource/Sprites/Minigame border.png" id="5_g8pfn"]
-[ext_resource type="PackedScene" uid="uid://0dy000pekki6" path="res://Nodes/Minigames/pong.tscn" id="6_1udyh"]
 
 [sub_resource type="Animation" id="Animation_wk5dr"]
 resource_name = "GameToMenu"
@@ -103,10 +99,11 @@ _data = {
 
 [node name="GameEngine" type="Node2D"]
 script = ExtResource("1_hdmhl")
+testing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-128, -128)
-offset = Vector2(-128, -128)
+offset = Vector2(-128, 0)
 anchor_mode = 0
 position_smoothing_enabled = true
 
@@ -115,13 +112,13 @@ libraries = {
 "": SubResource("AnimationLibrary_xqv5g")
 }
 
-[node name="SimonSays" parent="." instance=ExtResource("1_33hox")]
-
 [node name="UIRoot" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -256.0
+offset_top = -128.0
+offset_right = 1664.0
+offset_bottom = 952.0
 script = ExtResource("3_vj5eu")
 
 [node name="StartGameButton" type="Button" parent="UIRoot"]
@@ -148,12 +145,25 @@ offset_right = -1463.0
 offset_bottom = 71.0
 text = "Quit"
 
+[node name="Lives" type="RichTextLabel" parent="UIRoot"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_bottom = 40.0
+grow_horizontal = 0
+text = "Lives: 5"
+
 [node name="TimeSurvived" type="RichTextLabel" parent="UIRoot"]
-layout_mode = 0
-offset_left = 1356.0
-offset_top = -157.0
-offset_right = 1557.0
-offset_bottom = -97.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_top = 40.0
+offset_bottom = 100.0
+grow_horizontal = 0
 text = "Time Survived: 0"
 
 [node name="Countdown" type="RichTextLabel" parent="UIRoot"]
@@ -163,15 +173,5 @@ offset_top = 159.0
 offset_right = 549.0
 offset_bottom = 335.0
 text = "3"
-
-[node name="Rails" parent="." instance=ExtResource("4_kp2tl")]
-position = Vector2(265, 0)
-
-[node name="MinigameBorder2" type="Sprite2D" parent="."]
-position = Vector2(886, 14)
-texture = ExtResource("5_g8pfn")
-
-[node name="Pong" parent="." instance=ExtResource("6_1udyh")]
-position = Vector2(530, 0)
 
 [connection signal="pressed" from="UIRoot/StartGameButton" to="." method="_on_start_game_button_pressed"]
